@@ -29,21 +29,3 @@ spring:
 
   config.import:
   - optional:configserver:http://localhost:8080
-
-
-#oracle configuration
-#  datasource:
-#    url: jdbc:oracle:thin:@//localhost:1521/orcl
-#    username: system
-#    password: manager
-#    driver-class-name: oracle.jdbc.OracleDriver
-
-#jpa configuration
-#  jpa:
-#    show-sql: true
-#    hibernate:
-#      ddl-auto: update
-#    properties:
-#      hibernate:
-#        format_sql: true
-
