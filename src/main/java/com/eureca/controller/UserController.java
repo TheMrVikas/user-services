@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Objects;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,18 +25,12 @@ import lombok.AllArgsConstructor;
  */
 
 
-@CrossOrigin(origins = "http://localhost:5173")
 @RestController
 @RequestMapping(value = "/user")
 @AllArgsConstructor
 public class UserController {
 
 	private final UserService userService;
-	
-	@GetMapping("/test")
-	public String test() {
-		return "User Service is up and running!";
-	}
 	
 	/**
 	 * Endpoint to create a new user. It accepts a UserRequestDTO in the request body and returns a UserResponseDTO.
@@ -57,11 +50,8 @@ public class UserController {
 	 */
 	@GetMapping(value = "/{id}", produces = "application/json")
 	public ResponseEntity<UserResponseDTO> getUserById(@PathVariable("id") Long id) {
-		//UserResponseDTO response = userService.getUserById(id);
-		//creating dummy response for testing
-		UserResponseDTO response1 = new UserResponseDTO();
-		response1.setId(101L);
-		return Objects.nonNull(response1) ? ResponseEntity.ok(response1) : ResponseEntity.notFound().build();
+		UserResponseDTO response = userService.getUserById(id);
+		return Objects.nonNull(response) ? ResponseEntity.ok(response) : ResponseEntity.notFound().build();
 	}
 	
 	/**
