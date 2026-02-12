@@ -28,4 +28,34 @@ spring:
   
 
   config.import:
-  - optional:configserver:http://localhost:8080
+  - optional:configserver:http://localhost:9092
+
+#admin client configuration
+
+  boot:
+    admin:
+      client:
+        url: http://localhost:9095
+        instance:
+          prefer-ip: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+    metrics:
+      enabled: true
+    heapdump:
+      enabled: true
+    threaddump:
+      enabled: true
+    logfile:
+      enabled: true
+    env:
+      enabled: true
+    loggers:
+      enabled: true
